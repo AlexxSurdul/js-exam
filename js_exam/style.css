@@ -1,7 +1,10 @@
 h2 {
-    margin: 20px;
+    /*margin: 20px;*/
+    width: 90%;
+    margin: 20px auto;
 }
 
+/*-----------------index.html----------------*/
 #wrapper {
     width: 600px;
     display: grid;
@@ -43,6 +46,16 @@ h2 {
 
 }
 
+/*-----------------user-details.html----------------*/
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
 #user-details {
     display: flex;
     flex-direction: column;
@@ -56,19 +69,6 @@ h2 {
     background-color: #eeeffd;
 }
 
-
-#toggle {
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    padding: 2px;
-    text-align: center;
-    align-content: center;
-    height: 25px;
-    width: 90%;
-    background: #c8cfdc;
-    margin: 20px;
-}
-
 .back-btn {
     border: 1px solid lightgray;
     border-radius: 10px;
@@ -80,6 +80,51 @@ h2 {
     margin: 20px;
 }
 
+.back-btn:hover {
+    background: rgba(118, 181, 172, 0.69);
+    /* For Colorize Background */
+    box-shadow: 4px 6px 13px 0 rgba(113, 113, 113, 0.25);
+    color: #252525;
+    transition: 0.2s;
+}
+
 .additional-info {
     margin-left: 15px;
 }
+
+#user-posts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin: 20px;
+    width: 90%;
+}
+
+#user-posts p {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#hide-btn {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 2px;
+    text-align: center;
+    align-content: center;
+    height: 25px;
+    width: 90%;
+    background: #c8cfdc;
+    margin: 0 auto;
+}
+
+#hide-btn:hover {
+    background: rgba(118, 181, 172, 0.69);
+    /* For Colorize Background */
+    box-shadow: 4px 6px 13px 0 rgba(113, 113, 113, 0.25);
+    color: #252525;
+    transition: 0.2s;
+}
+
+/*-----------------user-posts.html----------------*/
+

@@ -11,7 +11,6 @@ const userId = urlParams.get('id');
 
 //задаємо блок для виведення інформації
 const userContainer = document.getElementById('user-details');
-const userPosts = document.getElementById('user-posts');
 
 //---------------------формуємо блок з інфою про юзера---------------------------------------------
 //перевіряємо чи прийшов user id і, чи він валідний
@@ -79,14 +78,29 @@ if (!userId || isNaN(userId)) {
 
 
 //---------------------формуємо блок з постами юзера---------------------------------------------
-//задаємо кнопку, яка буде відкривати/ховати пости
+//задаємо кнопку, яка буде відкривати пости
+const hideBtn = document.getElementById('hide-btn');
 
+//блок для постів
+const userPosts = document.getElementById('user-posts');
 
+//івент для відображення блока
+hideBtn.onclick = () => {
+    //очищаємо блок перед додаванням нових даних
+    userPosts.innerHTML = '';
 //перевіряємо чи прийшов user id і, чи він валідний
-if (!userId || isNaN(userId)) {
-    console.log('no id');
-} else {
-    fetch('https://jsonplaceholder.typicode.com/posts?userId=1')
-        .then((response) => response.json())
-        .then((json) => console.log(json));
+    if (!userId || isNaN(userId)) {
+        console.log('no id');
+    } else {
+        fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+            .then((response) => response.json())
+            .then((json) => {
+                for (const jsonElement of json) {
+                    const postTitle = document.createElement('div');
+                    userPosts.appendChild(postTitle);
+                    postTitle.innerHTML = `<p>${jsonElement.title} <a href="post-details.html?id=${jsonElement.id}">read more...</a></p>`;
+                }
+            })
+    }
+
 }
