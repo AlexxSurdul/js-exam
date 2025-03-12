@@ -29,7 +29,9 @@ fetch('https://jsonplaceholder.typicode.com/users')
             <p><strong>User Name</strong>: ${usedName}</p>
             <div class="user-details-button"><a href=user-details.html?id=${userId}>Details</a></div>
             `;
-            //додаємо перехід на сторінку з інформацією про user, передаємо userId в URL
+            //додаємо перехід на сторінку з інформацією про user в кнопку user-details-button,
+            // передаємо userId в URL, який обробимо на сторінці user-details.html
+
         }
     })
 
