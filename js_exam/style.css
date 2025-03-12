@@ -1,4 +1,4 @@
-h1 {
+h2 {
     margin: 20px;
 }
 
@@ -18,7 +18,7 @@ h1 {
     border: 1px solid lightgray;
     border-radius: 5px;
     padding: 10px;
-    background-color: #e2e5fa;
+    background-color: #eeeffd;
     height: 100px;
 }
 
@@ -41,4 +41,45 @@ h1 {
     color: #252525;
     transition: 0.2s;
 
+}
+
+#user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    margin: 20px;
+    width: 90%;
+    background-color: #eeeffd;
+}
+
+
+#toggle {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 2px;
+    text-align: center;
+    align-content: center;
+    height: 25px;
+    width: 90%;
+    background: #c8cfdc;
+    margin: 20px;
+}
+
+.back-btn {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 2px;
+    text-align: center;
+    align-content: center;
+    height: 25px;
+    background: #c8cfdc;
+    margin: 20px;
+}
+
+.additional-info {
+    margin-left: 15px;
 }

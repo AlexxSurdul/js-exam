@@ -11,41 +11,29 @@ let wrapper = document.getElementById("wrapper");
 fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(users => {
-        
-        //дістаємо об'єкти user з отриманого масиву
-        for (const user of users) {
-            console.log(user);                                      //візуалізація проміжного результату - видалити
-            const userId = user.id;
-            const usedName = user.name;
+        if (users.length !== 0 || !users) {
+            //дістаємо об'єкти user з отриманого масиву
+            for (const user of users) {
+                const userId = user.id;
+                const usedName = user.name;
 
-            //створюємо структуру для майбутніх блоків з user
-            let userBlock = document.createElement("div");
-            userBlock.classList.add("user-block");
-            wrapper.append(userBlock);
+                //створюємо структуру для майбутніх блоків з user
+                let userBlock = document.createElement("div");
+                userBlock.classList.add("user-block");
+                wrapper.append(userBlock);
 
-            //додаємо інфу всередину блоків з user
-            userBlock.innerHTML = `
+                //додаємо інфу всередину блоків з user
+                userBlock.innerHTML = `
             <p><strong>User ID</strong>: ${userId}</p>
             <p><strong>User Name</strong>: ${usedName}</p>
-            <div class="user-details-button"><a href=user-details.html?id=${userId}>Details</a></div>
+            <a class="user-details-button" href=user-details.html?id=${userId}>Details</a>
             `;
-            //додаємо перехід на сторінку з інформацією про user в кнопку user-details-button,
-            // передаємо userId в URL, який обробимо на сторінці user-details.html
+                //додаємо перехід на сторінку з інформацією про user в кнопку user-details-button,
+                // передаємо userId в URL, який обробимо на сторінці user-details.html
 
+            }
         }
     })
-
-
-//      На сторінці user-details.html:
-// 4. Вивести всю, без виключення, інформацію про об'єкт user на який клікнули
-// 5. Додати кнопку "post of current user", при кліку на яку, з'являються title всіх постів поточного юзера
-//    (для отримання постів використовуйте ендпоінт https://jsonplaceholder.typicode.com/users/USER_ID/posts)
-// 6. Кожному посту додати кнопку/посилання, при кліку на яку відбувається перехід на сторінку post-details.html, котра має детальну інфу про поточний пост.
-
-
-//      На сторінці post-details.html:
-// 7. Вивести всю, без виключення, інформацію про об'єкт post на який клікнули.
-// 8. Нижче інформація про пост, вивести всі коментарі поточного поста (ендпоінт - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
 
 
 // Стилізація проєкта -
