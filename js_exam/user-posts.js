@@ -1,7 +1,3 @@
-//      На сторінці post-details.html:
-// 7. Вивести всю, без виключення, інформацію про об'єкт post на який клікнули.
-// 8. Нижче інформація про пост, вивести всі коментарі поточного поста (ендпоінт - https://jsonplaceholder.typicode.com/posts/POST_ID/comments)
-
 //витягуємо post id з url
 const urlParams = new URLSearchParams(window.location.search);
 const postId = urlParams.get('id');
@@ -45,11 +41,8 @@ if (!postId || isNaN(postId)) {
                         <p>name: <strong>${comment.name}</strong></p>
                         <p>email: ${comment.email}</p>
                         <p class="post-text">${comment.body}</p>`;
-
                         })
                     })
-
             }
-
         })
 }
