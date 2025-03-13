@@ -15,7 +15,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
             //дістаємо об'єкти user з отриманого масиву
             for (const user of users) {
                 const userId = user.id;
-                const usedName = user.name;
+                const userName = user.name;
 
                 //створюємо структуру для майбутніх блоків з user
                 let userBlock = document.createElement("div");
@@ -25,7 +25,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
                 //додаємо інфу всередину блоків з user
                 userBlock.innerHTML = `
             <p><strong>User ID</strong>: ${userId}</p>
-            <p><strong>User Name</strong>: ${usedName}</p>
+            <p><strong>User Name</strong>: ${userName}</p>
             <a class="user-details-button" href=user-details.html?id=${userId}>Details</a>
             `;
                 //додаємо перехід на сторінку з інформацією про user в кнопку user-details-button,
@@ -34,11 +34,3 @@ fetch('https://jsonplaceholder.typicode.com/users')
             }
         }
     })
-
-
-// Стилізація проєкта -
-// index.html - всі блоки з user - по 2 в рядок. кнопки/посилання розташувати під інформацією про user.
-// user-details.html - блок з інфою про user зверху сторінки. Кнопка нижче, на 90% ширини сторінки, по центру.
-//     блоки з короткою інфою про post - в ряд по 5.
-// post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.
-//     Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що це блоки (дати фон. марджини і тд.)
