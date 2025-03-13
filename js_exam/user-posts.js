@@ -16,7 +16,7 @@ if (!postId || isNaN(postId)) {
             console.log(post);
 
             //перевіряємо чи валідний об'єкт
-            if (Object.keys(post).length === 0) {
+            if (!post || Object.keys(post).length === 0) {
                 userPostBox.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="index.html">HERE</a></p>';
 
             } else {
@@ -43,6 +43,8 @@ if (!postId || isNaN(postId)) {
                         <p class="post-text">${comment.body}</p>`;
                         })
                     })
+                    .catch(error => console.error('Error retrieving data:', error));
             }
         })
+        .catch(error => console.error('Error retrieving data:', error));
 }

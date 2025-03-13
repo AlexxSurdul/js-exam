@@ -5,7 +5,7 @@ let wrapper = document.getElementById("users-block");
 fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(users => {
-        if (users.length !== 0 || !users) {
+        if (users && users.length > 0) {
             //дістаємо об'єкти user з отриманого масиву
             for (const user of users) {
                 const userId = user.id;
@@ -25,5 +25,8 @@ fetch('https://jsonplaceholder.typicode.com/users')
                 // передаємо userId в URL, який обробимо на сторінці user-details.html
 
             }
+        } else {
+
         }
     })
+    .catch(error => console.error('Error retrieving data:', error));

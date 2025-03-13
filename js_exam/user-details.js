@@ -14,57 +14,57 @@ if (!userId || isNaN(userId)) {
         .then((response) => response.json())
         .then(userDetails => {
 
-                //перевіряємо чи масив не пустий
-                if (userDetails.length === 0) {
-                    userContainer.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="index.html">HERE</a></p>';
+            //перевіряємо чи масив не пустий
+            if (!userDetails || userDetails.length === 0) {
+                userContainer.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="index.html">HERE</a></p>';
 
-                } else {
-                    for (const userDetail of userDetails) {
+            } else {
+                for (const userDetail of userDetails) {
 
-                        const userName = document.createElement('h3') //додаємо заголовок
-                        userContainer.appendChild(userName);
-                        userName.innerText = userDetail.username;
+                    const userName = document.createElement('h3') //додаємо заголовок
+                    userContainer.appendChild(userName);
+                    userName.innerText = userDetail.username;
 
-                        for (const userDetailKey in userDetail) {
+                    for (const userDetailKey in userDetail) {
 
-                            //перевіряємо значення чи воно не є об'єктом
-                            if (Object.prototype.toString.call(userDetail[userDetailKey]) !== '[object Object]') {
-                                const userInfo = document.createElement('div'); //будуємо DOM структуру для значень
-                                userInfo.classList.add('user-info');
-                                userContainer.appendChild(userInfo);
-                                userInfo.innerHTML = `<p><strong>${userDetailKey}</strong>: ${userDetail[userDetailKey]}</p>`;
+                        //перевіряємо значення чи воно не є об'єктом
+                        if (Object.prototype.toString.call(userDetail[userDetailKey]) !== '[object Object]') {
+                            const userInfo = document.createElement('div'); //будуємо DOM структуру для значень
+                            userInfo.classList.add('user-info');
+                            userContainer.appendChild(userInfo);
+                            userInfo.innerHTML = `<p><strong>${userDetailKey}</strong>: ${userDetail[userDetailKey]}</p>`;
 
-                            }
-                            //якщо значення [object Object] витягуємо з нього дані
-                            if (Object.prototype.toString.call(userDetail[userDetailKey]) === '[object Object]') {
-                                const address = document.createElement('h4'); //заголовок
-                                userContainer.appendChild(address);
-                                address.innerText = `${userDetailKey}`;
+                        }
+                        //якщо значення [object Object] витягуємо з нього дані
+                        if (Object.prototype.toString.call(userDetail[userDetailKey]) === '[object Object]') {
+                            const address = document.createElement('h4'); //заголовок
+                            userContainer.appendChild(address);
+                            address.innerText = `${userDetailKey}`;
 
-                                for (const innerKey in userDetail[userDetailKey]) {
-                                    const innerObj = userDetail[userDetailKey][innerKey];
-                                    //перевіряємо значення чи воно не є об'єктом
-                                    if (Object.prototype.toString.call(innerObj) !== '[object Object]') {
+                            for (const innerKey in userDetail[userDetailKey]) {
+                                const innerObj = userDetail[userDetailKey][innerKey];
+                                //перевіряємо значення чи воно не є об'єктом
+                                if (Object.prototype.toString.call(innerObj) !== '[object Object]') {
 
-                                        const additionalInfo = document.createElement('div'); //будуємо DOM структуру для значень
-                                        additionalInfo.classList.add('additional-info');
-                                        userContainer.appendChild(additionalInfo);
-                                        additionalInfo.innerHTML = `<p><strong>${innerKey}</strong>: ${innerObj}</p>`;
-                                    } else {
-                                        const geo = document.createElement('div');
-                                        userContainer.appendChild(geo);
+                                    const additionalInfo = document.createElement('div'); //будуємо DOM структуру для значень
+                                    additionalInfo.classList.add('additional-info');
+                                    userContainer.appendChild(additionalInfo);
+                                    additionalInfo.innerHTML = `<p><strong>${innerKey}</strong>: ${innerObj}</p>`;
+                                } else {
+                                    const geo = document.createElement('div');
+                                    userContainer.appendChild(geo);
 
-                                        const {lat, lng} = innerObj; //деструктуруємо об'єкт geo
-                                        geo.innerHTML = `<p><strong>${innerKey}</strong> (lat: ${lat}, lng: ${lng}) </p>`;
+                                    const {lat, lng} = innerObj; //деструктуруємо об'єкт geo
+                                    geo.innerHTML = `<p><strong>${innerKey}</strong> (lat: ${lat}, lng: ${lng}) </p>`;
 
-                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-        )
+        })
+        .catch(error => console.error('Error retrieving data:', error));
 }
 
 //---------------------формуємо блок з постами юзера---------------------------------------------
@@ -88,8 +88,9 @@ hideBtn.onclick = () => {
                 for (const jsonElement of json) {
                     const postTitle = document.createElement('div');
                     userPosts.appendChild(postTitle);
-                    postTitle.innerHTML = `<p>${jsonElement.title} <a href="post-details.html?id=${jsonElement.id}" class="read-btn">read more...</a></p>`;
+                    postTitle.innerHTML = `<p>${jsonElement.title} <br><a href="post-details.html?id=${jsonElement.id}" class="read-btn">read more...</a></p>`;
                 }
             })
+            .catch(error => console.error('Error retrieving data:', error));
     }
 }
