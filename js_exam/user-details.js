@@ -76,7 +76,6 @@ if (!userId || isNaN(userId)) {
         )
 }
 
-
 //---------------------формуємо блок з постами юзера---------------------------------------------
 //задаємо кнопку, яка буде відкривати пости
 const hideBtn = document.getElementById('hide-btn');
@@ -98,7 +97,7 @@ hideBtn.onclick = () => {
                 for (const jsonElement of json) {
                     const postTitle = document.createElement('div');
                     userPosts.appendChild(postTitle);
-                    postTitle.innerHTML = `<p>${jsonElement.title} <a href="post-details.html?id=${jsonElement.id}">read more...</a></p>`;
+                    postTitle.innerHTML = `<p>${jsonElement.title} <a href="post-details.html?id=${jsonElement.id}" class="read-btn">read more...</a></p>`;
                 }
             })
     }

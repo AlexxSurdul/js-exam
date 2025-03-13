@@ -5,7 +5,7 @@
 //   котра має детальну інформацію про об'єкт на який клікнули
 
 //div id="wrapper" - створив в index.html як обгортку для блоків user
-let wrapper = document.getElementById("wrapper");
+let wrapper = document.getElementById("users-block");
 
 //отримуємо масив об'єктів users
 fetch('https://jsonplaceholder.typicode.com/users')

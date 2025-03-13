@@ -1,16 +1,24 @@
 h2 {
-    /*margin: 20px;*/
     width: 90%;
-    margin: 20px auto;
+    margin-top: 20px;
+    text-align: center;
 }
 
 /*-----------------index.html----------------*/
-#wrapper {
+.users-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+}
+
+#users-block {
     width: 600px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
-    margin: 20px;
+    margin-left: 50px;
+    margin-top: 20px;
 }
 
 .user-block {
@@ -47,7 +55,7 @@ h2 {
 }
 
 /*-----------------user-details.html----------------*/
-.box {
+.details-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -116,7 +124,7 @@ h2 {
     height: 25px;
     width: 90%;
     background: #c8cfdc;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
 }
 
 #hide-btn:hover {
@@ -127,13 +135,18 @@ h2 {
     transition: 0.2s;
 }
 
+.read-btn {
+    color: grey;
+    text-decoration: underline;
+}
+
 /*-----------------user-posts.html----------------*/
 .user-post-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 #user-post {
@@ -149,16 +162,34 @@ h2 {
     width: 90%;
 }
 
-#post-comments {
+#post-comments-box {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     border: 1px solid lightgray;
     border-radius: 10px;
     padding: 10px;
-    background: #f5f4f4;
+    /*background: #f5f4f4;*/
     text-align: left;
     align-content: space-evenly;
     width: 90%;
+    gap: 5px;
+}
+
+.post-comments {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 10px;
+    background: #f5f4f4;
+    gap: 5px;
+}
+.post-text {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    color: #252525;
+    padding: 5px;
+    background: #fafdf5;
 }
 
 
