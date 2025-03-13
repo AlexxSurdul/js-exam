@@ -31,6 +31,7 @@ h2 {
     padding: 10px;
     background-color: #eeeffd;
     height: 100px;
+    box-shadow: 4px 6px 13px 0 rgba(113, 113, 113, 0.25);
 }
 
 .user-details-button {
@@ -43,6 +44,11 @@ h2 {
     height: 25px;
     background: #c8cfdc;
     margin-top: 5px;
+    color: #621818;
+}
+
+.user-details-button:visited {
+    color: #252525;
 }
 
 .user-details-button:hover {
@@ -75,6 +81,7 @@ h2 {
     margin: 20px;
     width: 90%;
     background-color: #eeeffd;
+    box-shadow: 4px 6px 13px 0 rgba(113, 113, 113, 0.25);
 }
 
 .back-btn {
@@ -86,6 +93,7 @@ h2 {
     height: 25px;
     background: #c8cfdc;
     margin: 20px;
+    color: #252525;
 }
 
 .back-btn:hover {
@@ -113,6 +121,7 @@ h2 {
     border-radius: 10px;
     padding: 10px;
     background: #f5f4f4;
+    box-shadow: 4px 6px 13px 0 rgba(113, 113, 113, 0.25);
 }
 
 #hide-btn {
@@ -124,7 +133,7 @@ h2 {
     height: 25px;
     width: 90%;
     background: #c8cfdc;
-    /*margin: 0 auto;*/
+    box-shadow: 4px 6px 13px 0 rgba(113, 113, 113, 0.25);
 }
 
 #hide-btn:hover {
@@ -136,8 +145,15 @@ h2 {
 }
 
 .read-btn {
-    color: grey;
+    color: #621818;
     text-decoration: underline;
+}
+.read-btn:hover {
+    color: #252525;
+    transition: 0.2s;
+}
+.read-btn:visited {
+    color: grey;
 }
 
 /*-----------------user-posts.html----------------*/
@@ -160,19 +176,16 @@ h2 {
     background: #eeeffd;
     height: 150px;
     width: 90%;
+    box-shadow: 4px 6px 13px 0 rgba(113, 113, 113, 0.25);
 }
 
 #post-comments-box {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    border: 1px solid lightgray;
-    border-radius: 10px;
+    grid-gap: 10px;
     padding: 10px;
-    /*background: #f5f4f4;*/
     text-align: left;
-    align-content: space-evenly;
     width: 90%;
-    gap: 5px;
 }
 
 .post-comments {
@@ -182,7 +195,8 @@ h2 {
     border-radius: 10px;
     padding: 10px;
     background: #f5f4f4;
-    gap: 5px;
+    gap: 10px;
+    box-shadow: 4px 6px 13px 0 rgba(113, 113, 113, 0.25);
 }
 .post-text {
     border: 1px solid lightgray;
