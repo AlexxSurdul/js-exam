@@ -26,7 +26,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
 
             }
         } else {
-
+            wrapper.innerHTML = 'Something went wrong, please try again later.';
         }
     })
     .catch(error => console.error('Error retrieving data:', error));

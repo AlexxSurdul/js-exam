@@ -14,7 +14,7 @@ if (!userId || isNaN(userId)) {
         .then((response) => response.json())
         .then(userDetails => {
 
-            //check if the array is not empty
+            //check if the array is not empty and not a null
             if (!userDetails || userDetails.length === 0) {
                 userContainer.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="index.html">HERE</a></p>';
 

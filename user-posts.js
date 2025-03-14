@@ -15,7 +15,7 @@ if (!postId || isNaN(postId)) {
         .then((post) => {
             console.log(post);
 
-            //check if the object is valid
+            //check if the object is valid and not a null
             if (!post || Object.keys(post).length === 0) {
                 userPostBox.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="index.html">HERE</a></p>';
 
