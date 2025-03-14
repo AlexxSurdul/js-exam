@@ -1,12 +1,12 @@
-//витягуємо post id з url
+//extract post id from url
 const urlParams = new URLSearchParams(window.location.search);
 const postId = urlParams.get('id');
 
-//задаємо контейнери для постів і коментарів
+//set containers for posts and comments
 const userPostBox = document.getElementById('user-post');
 const postCommentsBox = document.getElementById('post-comments-box');
 
-//перевіряємо чи прийшов user id і, чи він валідний
+//we check whether the user id has arrived and whether it is valid
 if (!postId || isNaN(postId)) {
     userPostBox.innerHTML = '<p class="back-btn">You need to choose a user <a href="index.html">HERE</a></p>';
 } else {
@@ -15,24 +15,24 @@ if (!postId || isNaN(postId)) {
         .then((post) => {
             console.log(post);
 
-            //перевіряємо чи валідний об'єкт
+            //check if the object is valid
             if (!post || Object.keys(post).length === 0) {
                 userPostBox.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="index.html">HERE</a></p>';
 
             } else {
-                //виводимо пост
+                //display the post
                 userPostBox.innerHTML =
                     `<h5>post number: ${post.id}, user id: ${post.userId}</h5>
                 <h3>${post.title}</h3>
                 <p>${post.body}</p>`;
 
-                //витягуємо коменти до поста
+                //extract comments to a post
                 fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)
                     .then(response => response.json())
                     .then(comments => {
-                        //витягуємо та виводимо окремі пости з масиву
+                        //extract and display individual posts from the array
                         comments.forEach(comment => {
-                            //створюємо елемент для виводу коментарів
+                            //create an element for displaying comments
                             const postComments = document.createElement('div');
                             postComments.classList.add('post-comments');
                             postCommentsBox.appendChild(postComments);

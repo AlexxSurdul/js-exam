@@ -1,12 +1,12 @@
-//витягуємо user id з url
+//extract user id from url
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get('id');
 
-//задаємо блок для виведення інформації
+//specify a block for displaying information
 const userContainer = document.getElementById('user-details');
 
-//---------------------формуємо блок з інфою про юзера---------------------------------------------
-//перевіряємо чи прийшов user id і, чи він валідний
+//---------------------form a block with information about the user---------------------------------------------
+//we check whether the user id has arrived and whether it is valid
 if (!userId || isNaN(userId)) {
     userContainer.innerHTML = '<p class="back-btn">You need to choose a user <a href="index.html">HERE</a></p>';
 } else {
@@ -14,39 +14,39 @@ if (!userId || isNaN(userId)) {
         .then((response) => response.json())
         .then(userDetails => {
 
-            //перевіряємо чи масив не пустий
+            //check if the array is not empty
             if (!userDetails || userDetails.length === 0) {
                 userContainer.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="index.html">HERE</a></p>';
 
             } else {
                 for (const userDetail of userDetails) {
 
-                    const userName = document.createElement('h3') //додаємо заголовок
+                    const userName = document.createElement('h3') //add a title
                     userContainer.appendChild(userName);
                     userName.innerText = userDetail.username;
 
                     for (const userDetailKey in userDetail) {
 
-                        //перевіряємо значення чи воно не є об'єктом
+                        //check the value to see if it is not an object
                         if (Object.prototype.toString.call(userDetail[userDetailKey]) !== '[object Object]') {
-                            const userInfo = document.createElement('div'); //будуємо DOM структуру для значень
+                            const userInfo = document.createElement('div'); //build a DOM structure for values
                             userInfo.classList.add('user-info');
                             userContainer.appendChild(userInfo);
                             userInfo.innerHTML = `<p><strong>${userDetailKey}</strong>: ${userDetail[userDetailKey]}</p>`;
 
                         }
-                        //якщо значення [object Object] витягуємо з нього дані
+                        //if the value [object Object] we extract data from it
                         if (Object.prototype.toString.call(userDetail[userDetailKey]) === '[object Object]') {
-                            const address = document.createElement('h4'); //заголовок
+                            const address = document.createElement('h4'); //title
                             userContainer.appendChild(address);
                             address.innerText = `${userDetailKey}`;
 
                             for (const innerKey in userDetail[userDetailKey]) {
                                 const innerObj = userDetail[userDetailKey][innerKey];
-                                //перевіряємо значення чи воно не є об'єктом
+                                //check the value to see if it is not an object
                                 if (Object.prototype.toString.call(innerObj) !== '[object Object]') {
 
-                                    const additionalInfo = document.createElement('div'); //будуємо DOM структуру для значень
+                                    const additionalInfo = document.createElement('div'); //we build a DOM structure for values
                                     additionalInfo.classList.add('additional-info');
                                     userContainer.appendChild(additionalInfo);
                                     additionalInfo.innerHTML = `<p><strong>${innerKey}</strong>: ${innerObj}</p>`;
@@ -54,7 +54,7 @@ if (!userId || isNaN(userId)) {
                                     const geo = document.createElement('div');
                                     userContainer.appendChild(geo);
 
-                                    const {lat, lng} = innerObj; //деструктуруємо об'єкт geo
+                                    const {lat, lng} = innerObj; //destructuring the geo object
                                     geo.innerHTML = `<p><strong>${innerKey}</strong> (lat: ${lat}, lng: ${lng}) </p>`;
 
                                 }
@@ -67,18 +67,18 @@ if (!userId || isNaN(userId)) {
         .catch(error => console.error('Error retrieving data:', error));
 }
 
-//---------------------формуємо блок з постами юзера---------------------------------------------
-//задаємо кнопку, яка буде відкривати пости
+//---------------------form a block with user posts---------------------------------------------
+//set a button that will open posts
 const hideBtn = document.getElementById('hide-btn');
 
-//блок для постів
+//block for posts
 const userPosts = document.getElementById('user-posts');
 
-//івент для відображення блока
+//event for displaying a block
 hideBtn.onclick = () => {
-    //очищаємо блок перед додаванням нових даних
+    //clear the block before adding new data
     userPosts.innerHTML = '';
-//перевіряємо чи прийшов user id і, чи він валідний
+//check whether the user id has arrived and whether it is valid
     if (!userId || isNaN(userId)) {
         console.log('no id');
     } else {
