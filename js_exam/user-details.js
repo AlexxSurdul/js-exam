@@ -8,7 +8,7 @@ const userContainer = document.getElementById('user-details');
 //---------------------формуємо блок з інфою про юзера---------------------------------------------
 //перевіряємо чи прийшов user id і, чи він валідний
 if (!userId || isNaN(userId)) {
-    userContainer.innerHTML = '<p class="back-btn">You need to choose a user <a href="index.html">HERE</a></p>';
+    userContainer.innerHTML = '<p class="back-btn">You need to choose a user <a href="../index.html">HERE</a></p>';
 } else {
     fetch(`https://jsonplaceholder.typicode.com/users?id=${userId}`)
         .then((response) => response.json())
@@ -16,7 +16,7 @@ if (!userId || isNaN(userId)) {
 
             //перевіряємо чи масив не пустий
             if (!userDetails || userDetails.length === 0) {
-                userContainer.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="index.html">HERE</a></p>';
+                userContainer.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="../index.html">HERE</a></p>';
 
             } else {
                 for (const userDetail of userDetails) {
