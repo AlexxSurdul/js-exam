@@ -8,7 +8,7 @@ const postCommentsBox = document.getElementById('post-comments-box');
 
 //перевіряємо чи прийшов user id і, чи він валідний
 if (!postId || isNaN(postId)) {
-    userPostBox.innerHTML = '<p class="back-btn">You need to choose a user <a href="../index.html">HERE</a></p>';
+    userPostBox.innerHTML = '<p class="back-btn">You need to choose a user <a href="index.html">HERE</a></p>';
 } else {
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         .then((response) => response.json())
@@ -17,7 +17,7 @@ if (!postId || isNaN(postId)) {
 
             //перевіряємо чи валідний об'єкт
             if (!post || Object.keys(post).length === 0) {
-                userPostBox.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="../index.html">HERE</a></p>';
+                userPostBox.innerHTML = '<p class="back-btn">Something went wrong, please try again later or choose a user <a href="index.html">HERE</a></p>';
 
             } else {
                 //виводимо пост
